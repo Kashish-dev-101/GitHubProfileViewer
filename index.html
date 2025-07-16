@@ -3,43 +3,63 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GitHub Profile Viewer</title>
+    <title>GitHub Repo Explorer</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
-      <h1>GitHub Profile Viewer</h1>
+      <h1>GitHub Repository Explorer</h1>
 
-      <form id="search-form">
+      <!-- Search Form -->
+      <form id="repo-search-form">
         <input
           type="text"
-          id="username"
-          placeholder="Enter GitHub username"
+          id="repo-search-input"
+          placeholder="Search repositories by keyword"
           required
         />
-        <button type="submit">Search</button>
+        <button type="submit" id="repoSearchBtn">Search</button>
       </form>
 
-      <div id="profile-container" class="hidden">
-        <div class="profile">
-          <img id="avatar" src="" alt="User Avatar" />
-          <div class="info">
-            <h2 id="name"></h2>
-            <p id="bio"></p>
-            <p><strong>Location:</strong> <span id="location"></span></p>
-            <p>
-              <strong>Followers:</strong> <span id="followers"></span> |
-              <strong>Following:</strong> <span id="following"></span>
-            </p>
-          </div>
-        </div>
-        <h3>Top Repositories</h3>
-        <ul id="repos"></ul>
+      <div class="main-content">
+        <!-- Sidebar for Category Filters -->
+        <aside class="sidebar">
+          <h3>Filter by Language</h3>
+          <ul id="language-filters">
+            <li>
+              <button class="filter-btn" data-language="JavaScript">
+                JavaScript
+              </button>
+            </li>
+            <li>
+              <button class="filter-btn" data-language="Python">Python</button>
+            </li>
+            <li>
+              <button class="filter-btn" data-language="HTML">HTML</button>
+            </li>
+            <li>
+              <button class="filter-btn" data-language="CSS">CSS</button>
+            </li>
+            <li>
+              <button class="filter-btn" data-language="TypeScript">
+                TypeScript
+              </button>
+            </li>
+          </ul>
+        </aside>
+
+        <!-- Repo Results Section -->
+        <section class="repo-results" data-section="results">
+          <h2>Repositories</h2>
+          <div id="repo-list" class="repo-list"></div>
+          <div id="pagination" class="pagination-controls"></div>
+        </section>
       </div>
 
+      <!-- Error Message -->
       <p id="error" class="error hidden"></p>
     </div>
 
-    <script src="script.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>
