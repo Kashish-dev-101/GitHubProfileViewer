@@ -12,6 +12,9 @@ console.log(repoList);
 const paginationControls = document.querySelector("#pagination");
 console.log(paginationControls); // This will be used to render pagination controls
 
+const filterBtn = document.querySelectorAll(".filter-btn");
+console.log(filterBtn);
+
 const baseURL = "https://api.github.com/"; // Base URL for GitHub API
 
 let currentSearchTerm = ""; // Variable to store the current search term
@@ -103,7 +106,7 @@ const renderPaginationControls = () => {
 
     btn.addEventListener("click", async () => {
       currentPage = i; // Update current page
-      fetchRepositories(currentSearchTerm, currentPage); // Fetch repositories for the new page
+      const repos = await fetchRepositories(currentSearchTerm, currentPage); // Fetch repositories for the new page
       renderPaginationControls(); // Re-render pagination controls
     });
     paginationControls.append(btn);
@@ -115,6 +118,7 @@ const renderPaginationControls = () => {
 
 submitForm.addEventListener("submit", async (event) => {
   event.preventDefault(); // using this to prevent reloading of the page when the form is submitted
+
   const repoSearchInput = document.querySelector("#repo-search-input");
   console.log(repoSearchInput);
   const searchTerm = repoSearchInput.value.trim();
@@ -124,13 +128,12 @@ submitForm.addEventListener("submit", async (event) => {
 
   currentSearchTerm = searchTerm; // Update the current search term
   currentPage = 1; // Reset to the first page
-  repoSearchInput.value = ""; // Set the input value to null
 
   repoList.innerHTML = ""; // Clear previous results
   repoSearchInput.value = ""; // Clear the input field
 
   try {
-    fetchRepositories(currentSearchTerm, currentPage);
+    const repos = await fetchRepositories(currentSearchTerm, currentPage);
     renderPaginationControls(); // Render pagination controls after fetching repositories
     //console.log(repos);
   } catch (error) {
@@ -138,3 +141,34 @@ submitForm.addEventListener("submit", async (event) => {
     repoList.innerHTML = `<p class="error">Error fetching repositories. Please try again later.</p>`;
   }
 });
+
+// Event listner for the Filter buttons (always use a for of loop to traverse through all the button in the NodeList)
+
+for (let btn of filterBtn) {
+  console.log(btn);
+  btn.addEventListener("click", async () => {
+    // Remove active class from all buttons Importnat rememeber to toggle between active and innactive states of button use forEach method
+    filterBtn.forEach((btn) => {
+      btn.classList.remove("active");
+    });
+
+    btn.classList.add("active");
+    const filterdata = btn.innerText;
+    console.log(filterdata);
+
+    currentSearchTerm = filterdata.trim(); // Update the current search term
+    currentPage = 1; // Reset to the first page
+
+    repoList.innerHTML = ""; // Clear previous results
+    //repoSearchInput.value = ""; // Clear the input field
+
+    try {
+      const repos = await fetchRepositories(currentSearchTerm, currentPage);
+      renderPaginationControls(); // Render pagination controls after fetching repositories
+      //console.log(repos);
+    } catch (error) {
+      console.error("Error fetching repositories:", error);
+      repoList.innerHTML = `<p class="error">Error fetching repositories. Please try again later.</p>`;
+    }
+  });
+}

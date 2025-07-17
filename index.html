@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GitHub Repo Explorer</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
   <body>
     <div class="container">
       <h1>GitHub Repository Explorer</h1>
 
-      <!-- Search Form -->
       <form id="repo-search-form">
         <input
           type="text"
@@ -21,42 +24,101 @@
         <button type="submit" id="repoSearchBtn">Search</button>
       </form>
 
-      <div class="main-content">
-        <!-- Sidebar for Category Filters -->
+      <div class="content-layout">
         <aside class="sidebar">
           <h3>Filter by Language</h3>
           <ul id="language-filters">
             <li>
               <button class="filter-btn" data-language="JavaScript">
-                JavaScript
+                <i class="fab fa-js"></i> JavaScript
               </button>
             </li>
             <li>
-              <button class="filter-btn" data-language="Python">Python</button>
+              <button class="filter-btn" data-language="Node">
+                <i class="fab fa-node-js"></i> Node.js
+              </button>
             </li>
             <li>
-              <button class="filter-btn" data-language="HTML">HTML</button>
+              <button class="filter-btn" data-language="HTML">
+                <i class="fab fa-html5"></i> HTML
+              </button>
             </li>
             <li>
-              <button class="filter-btn" data-language="CSS">CSS</button>
+              <button class="filter-btn" data-language="CSS">
+                <i class="fab fa-css3-alt"></i> CSS
+              </button>
             </li>
             <li>
               <button class="filter-btn" data-language="TypeScript">
-                TypeScript
+                <i class="fas fa-code"></i> TypeScript
+              </button>
+            </li>
+            <li>
+              <button class="filter-btn" data-language="Node.js">
+                <i class="fab fa-node-js"></i> Node.js
               </button>
             </li>
           </ul>
         </aside>
 
-        <!-- Repo Results Section -->
         <section class="repo-results" data-section="results">
           <h2>Repositories</h2>
           <div id="repo-list" class="repo-list"></div>
           <div id="pagination" class="pagination-controls"></div>
         </section>
+
+        <aside class="sidebar tech-sidebar">
+          <h3>Filter by Technology</h3>
+          <ul id="technology-filters">
+            <li>
+              <button class="filter-btn" data-tech="css">
+                <i class="fab fa-css3-alt"></i> CSS
+              </button>
+            </li>
+            <li>
+              <button class="filter-btn" data-tech="http">
+                <i class="fas fa-network-wired"></i> HTTP
+              </button>
+            </li>
+            <li>
+              <button class="filter-btn" data-tech="video.js">
+                <i class="fas fa-video"></i> Video.js
+              </button>
+            </li>
+            <li>
+              <button class="filter-btn" data-tech="image processing">
+                <i class="fas fa-image"></i> Image Processing
+              </button>
+            </li>
+            <li>
+              <button class="filter-btn" data-tech="video processing">
+                <i class="fas fa-film"></i> Video Processing
+              </button>
+            </li>
+            <li>
+              <button class="filter-btn" data-tech="authentication">
+                <i class="fas fa-user-lock"></i> Authentication
+              </button>
+            </li>
+            <li>
+              <button class="filter-btn" data-tech="api">
+                <i class="fas fa-plug"></i> API
+              </button>
+            </li>
+            <li>
+              <button class="filter-btn" data-tech="frontend">
+                <i class="fas fa-desktop"></i> Frontend
+              </button>
+            </li>
+            <li>
+              <button class="filter-btn" data-tech="backend">
+                <i class="fas fa-server"></i> Backend
+              </button>
+            </li>
+          </ul>
+        </aside>
       </div>
 
-      <!-- Error Message -->
       <p id="error" class="error hidden"></p>
     </div>
 

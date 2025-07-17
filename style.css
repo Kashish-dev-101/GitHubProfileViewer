@@ -12,12 +12,11 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 20px auto;
   padding: 0 20px;
 }
 
-/* Heading */
 h1 {
   text-align: center;
   margin-bottom: 20px;
@@ -54,9 +53,10 @@ button:hover {
 }
 
 /* Layout */
-.main-content {
+.content-layout {
   display: flex;
   gap: 20px;
+  align-items: flex-start;
 }
 
 /* Sidebar */
@@ -66,6 +66,7 @@ button:hover {
   padding: 15px;
   border-radius: 6px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
 }
 
 .sidebar h3 {
@@ -77,23 +78,40 @@ button:hover {
   list-style: none;
 }
 
+/* Filter Button */
 .filter-btn {
   width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
   background-color: #e1e4e8;
+  color: #333;
   border: none;
   padding: 10px;
   margin-bottom: 8px;
   border-radius: 4px;
   text-align: left;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .filter-btn:hover {
   background-color: #d1d5da;
 }
 
-/* Repo Results Section */
+.filter-btn.active {
+  background-color: #2da44e;
+  color: white;
+}
+
+/* Icon Styling */
+.filter-btn i {
+  font-size: 1.2rem;
+  margin-right: 6px;
+}
+
+/* Repo Results */
 .repo-results {
   flex: 1;
 }
@@ -102,14 +120,12 @@ button:hover {
   margin-bottom: 15px;
 }
 
-/* Repo Cards Container */
 .repo-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 16px;
 }
 
-/* Repo Card Styles */
 .repo-card {
   background-color: #fff;
   border-radius: 8px;
@@ -125,7 +141,6 @@ button:hover {
   transform: translateY(-4px);
 }
 
-/* Repo Header (Avatar + Username) */
 .repo-header {
   display: flex;
   align-items: center;
@@ -160,14 +175,18 @@ button:hover {
   text-decoration: underline;
 }
 
-/* Description */
 .repo-description {
   font-size: 0.95rem;
   color: #555;
   line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Optional metadata (if you add it later) */
 .repo-meta {
   font-size: 0.85rem;
   color: #666;
@@ -176,40 +195,7 @@ button:hover {
   flex-wrap: wrap;
 }
 
-/* Error */
-.error {
-  color: red;
-  text-align: center;
-  margin-top: 15px;
-}
-
-.hidden {
-  display: none;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .main-content {
-    flex-direction: column;
-  }
-
-  .sidebar {
-    width: 100%;
-  }
-}
-
-.repo-description {
-  font-size: 0.95rem;
-  color: #555;
-  line-height: 1.4;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Pagination Controls */
+/* Pagination */
 .pagination-controls {
   display: flex;
   justify-content: center;
@@ -237,4 +223,69 @@ button:hover {
   background-color: #2da44e;
   color: white;
   font-weight: bold;
+}
+
+/* Error */
+.error {
+  color: red;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .content-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+}
+
+/* Language Icon Colors */
+.fa-js {
+  color: #f7df1e;
+}
+.fa-node-js {
+  color: #3c873a;
+}
+.fa-html5 {
+  color: #e34c26;
+}
+.fa-css3-alt {
+  color: #264de4;
+}
+.fa-code {
+  color: #6c63ff;
+}
+
+/* Technology Icon Colors */
+.fa-network-wired {
+  color: #6a5acd;
+}
+.fa-video {
+  color: #d33f49;
+}
+.fa-image {
+  color: #ff9800;
+}
+.fa-film {
+  color: #4caf50;
+}
+.fa-user-lock {
+  color: #9c27b0;
+}
+.fa-plug {
+  color: #f44336;
+}
+.fa-desktop {
+  color: #2196f3;
+}
+.fa-server {
+  color: #795548;
 }
