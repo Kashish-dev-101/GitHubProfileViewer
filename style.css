@@ -289,3 +289,65 @@ button:hover {
 .fa-server {
   color: #795548;
 }
+
+h3 > .star-count {
+  font-size: 0.9rem;
+  color: #f1c40f; /* golden yellow */
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.star-count {
+  font-size: 0.9rem;
+  color: #333;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 10px;
+}
+
+.star-count i {
+  color: #f1c40f;
+}
+
+.user-popup {
+  position: absolute;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  padding: 12px 16px;
+  width: 260px;
+  z-index: 999;
+  transition: opacity 0.2s ease-in-out;
+  font-size: 0.9rem;
+}
+
+.user-popup img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 8px;
+}
+
+.user-popup strong {
+  display: block;
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+  color: #222;
+}
+
+.user-popup p {
+  margin: 4px 0;
+  color: #444;
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.user-popup p span {
+  font-weight: 500;
+}
